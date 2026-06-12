@@ -1,4 +1,5 @@
 import socket
+import time
 
 print("=" * 40)
 print("NETWORK PORT SCANNER")
@@ -6,23 +7,41 @@ print("=" * 40)
 
 target = input("Enter Target IP: ")
 
+start_port = int(input("Enter Start Port: "))
+end_port = int(input("Enter End Port: "))
+
 open_ports = []
+
+start_time = time.time()
 
 print(f"\nScanning {target}...\n")
 
-for port in range(1, 9000):
+for port in range(start_port, end_port + 1):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(0.5)
 
     result = s.connect_ex((target, port))
 
     if result == 0:
-        print(f"Port {port} is OPEN")
+        try:
+            service = socket.getservbyport(port)
+        except:
+            service = "Unknown"
+
+        print(f"Port {port} is OPEN ({service})")
         open_ports.append(port)
 
     s.close()
+
+end_time = time.time()
 
 print("\nScan Completed")
 print("-" * 40)
 print("Open Ports:", open_ports)
 print("Total Open Ports:", len(open_ports))
+print(f"Scan Time: {end_time-start_time:.2f} seconds")
+
+with open("scan_report.txt", "w") as f:
+    f.write(f"Target: {target}\n")
+    f.write(f"Open Ports: {open_ports}\n")
+    f.write(f"Total Open Ports: {len(open_ports)}\n")
