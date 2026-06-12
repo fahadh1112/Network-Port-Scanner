@@ -27,4 +27,16 @@ Python based TCP port scanner developed in kali Linux using socket programming t
 ```bash
 python3 port_scanner.py
 
-2`1
+## Installation (Anyone wants to use)
+
+Clone the repository:
+
+bash
+git clone https://github.com/fahadh1112/Network-Port-Scanner.git
+cd Network-Port-Scanner
+
+
+Run the scanner:
+
+bash
+python3 port_scanner.py
