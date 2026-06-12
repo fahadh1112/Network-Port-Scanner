@@ -13,6 +13,11 @@ Python based TCP port scanner developed in kali Linux using socket programming t
 - Python 3
 - Socket Programming
 - Kali Linux
+- Target IP Input
+- Open Port Detection
+- Service Detection(Http,ssh,etc)
+- Scan Duration Measurement
+- Report Generation
 - Cyber Security
 - Network Security
 - Ethical Hacking
@@ -21,3 +26,5 @@ Python based TCP port scanner developed in kali Linux using socket programming t
 
 ```bash
 python3 port_scanner.py
+
+2`1
